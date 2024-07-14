@@ -1,0 +1,15 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Native
+/Native.API/bin/Debug/net8.0
+/Native.API/obj
+/Native.Application/bin/Debug/net8.0
+/Native.Application/obj
+/Native.Core/bin/Debug/net8.0
+/Native.Core/obj
+/Native.Infrastructure/bin/Debug/net8.0
+/Native.Infrastructure/obj
+/Native.UnitTests/bin/Debug/net8.0
+/Native.UnitTests/obj
