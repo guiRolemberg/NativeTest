@@ -3,13 +3,13 @@
 ################################################################################
 
 /.vs/Native
-/Native.API/bin/Debug/net8.0
+/Native.API/bin
 /Native.API/obj
-/Native.Application/bin/Debug/net8.0
+/Native.Application/bin
 /Native.Application/obj
-/Native.Core/bin/Debug/net8.0
+/Native.Core/bin
 /Native.Core/obj
-/Native.Infrastructure/bin/Debug/net8.0
+/Native.Infrastructure/bin
 /Native.Infrastructure/obj
-/Native.UnitTests/bin/Debug/net8.0
+/Native.UnitTests/bin
 /Native.UnitTests/obj
