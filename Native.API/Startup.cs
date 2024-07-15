@@ -1,8 +1,10 @@
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -50,10 +52,12 @@ public class Startup(IConfiguration configuration)
         services.AddScoped<IAuthService, AuthService>();
 
         //add Controllers
-        services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)));        
-
-        //add MediatR
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)));
+        
+        //add Validator
+        services.AddFluentValidationAutoValidation();
+        services.AddFluentValidationClientsideAdapters();
+        services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
 
         //add Commands Handlers
         services.AddScoped<IRequestHandler<CreateSneakerCommand, int>, CreateSneakerCommandHandler>();
@@ -68,8 +72,8 @@ public class Startup(IConfiguration configuration)
         services.AddScoped<IRequestHandler<GetSneakerByIdQuery, SneakerDetailsViewModel>, GetSneakerByIdQueryHandler>();
         services.AddScoped<IRequestHandler<GetUserQuery, UserViewModel>, GetUserQueryHandler>();
 
-        //add Validators
-        services.AddValidatorsFromAssemblyContaining<CreateUserCommandValidator>();
+        //add MediatR
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
         services.AddSwaggerGen(c =>
         {
