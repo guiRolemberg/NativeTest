@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/Native
+/.vs
 /Native.API/bin
 /Native.API/obj
 /Native.Application/bin
@@ -13,4 +13,3 @@
 /Native.Infrastructure/obj
 /Native.UnitTests/bin
 /Native.UnitTests/obj
-/.vs/ProjectEvaluation
