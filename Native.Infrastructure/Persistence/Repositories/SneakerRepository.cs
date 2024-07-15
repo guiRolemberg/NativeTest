@@ -17,7 +17,11 @@ public class SneakerRepository(NativeDbContext dbContext) : ISneakerRepository
 
     public async Task<List<Sneaker>> GetAllSearchAsync(int idUser, string query)
     {
-        return await _dbContext.Sneakers.Where(x => x.IdUser == idUser).ToListAsync();
+        return await (from p in _dbContext.Sneakers
+                     where p.IdUser == idUser && (
+                           p.Name.Contains(query) ||
+                           p.Brand.Contains(query))
+                    select p).ToListAsync();
     }
 
     public async Task<Sneaker> GetDetailsByIdAsync(int id)
